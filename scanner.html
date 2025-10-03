@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner - Staff</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-6 m-4">
+        <h1 class="text-3xl font-extrabold gradient-text mb-2">Scan Order QR Code</h1>
+        <p class="text-gray-500 mb-6">Enter the QR code or scan it to view and fulfill orders</p>
+
+        <div id="scanner-container">
+            <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Enter QR Code</label>
+                <div class="flex space-x-2">
+                    <input type="text" id="qr-input" placeholder="Enter QR code" class="flex-1 px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg">
+                    <button id="scan-btn" class="bg-orange-500 text-white font-bold px-6 rounded-lg hover:bg-orange-600 transition">Scan</button>
+                </div>
+            </div>
+
+            <div id="scan-error" class="text-red-500 text-sm text-center mb-4"></div>
+
+            <div class="bg-blue-50 p-4 rounded-xl border-2 border-blue-200">
+                <p class="text-sm text-gray-600">
+                    <strong>Instructions:</strong> Enter the QR code from the student's order confirmation, then click "Scan" to view order details and fulfill it.
+                </p>
+            </div>
+        </div>
+
+        <div id="order-details-container" class="hidden">
+            <div class="bg-green-50 p-4 rounded-xl border-2 border-green-200 mb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <div>
+                        <p class="text-sm text-gray-500">Student Name</p>
+                        <p id="detail-student-name" class="text-lg font-bold text-gray-800"></p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-gray-500">Student ID</p>
+                        <p id="detail-student-id" class="text-lg font-bold text-gray-800"></p>
+                    </div>
+                </div>
+                <div class="border-t border-green-300 pt-3">
+                    <p class="text-sm text-gray-500 mb-2">Order Date</p>
+                    <p id="detail-order-date" class="font-semibold text-gray-800"></p>
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-4 rounded-xl border-2 border-orange-200 mb-4">
+                <p class="font-semibold text-gray-800 mb-3">Order Items</p>
+                <div id="detail-items" class="space-y-2"></div>
+                <div class="border-t border-orange-300 mt-3 pt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-gray-800">Total Amount</span>
+                        <span id="detail-total" class="text-2xl font-bold text-green-600"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-status-container"></div>
+
+            <div id="fulfill-actions" class="space-y-3">
+                <button id="fulfill-btn" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 shadow-lg">Fulfill Order</button>
+                <button id="back-btn" class="w-full bg-gray-500 text-white font-bold py-3 px-4 rounded-xl hover:bg-gray-600 transition">Scan Another</button>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center border-t border-gray-200 pt-4">
+            <a href="staff.html" class="font-semibold text-sm text-gray-500 hover:text-orange-500 transition">Back to Staff Dashboard</a>
+        </div>
+    </div>
+
+    <script type="module" src="scanner.js"></script>
+</body>
+</html>
